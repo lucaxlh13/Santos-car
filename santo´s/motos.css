@@ -106,6 +106,7 @@ h3 i {
     align-self: center;
     margin-top: 5px;
     border: 2px solid #503f32;
+    cursor: pointer;
   }
 
 

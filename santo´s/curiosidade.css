@@ -46,8 +46,8 @@ body {
     justify-content: space-around;
     align-items: center;
 }
-    
-.banner .container .card {
+
+.card {
     background-color: #503f32d6;
     height: 550px;
     width: 500px;
@@ -60,11 +60,6 @@ body {
     justify-content: center;
   }
   
-  .card {
-    display: flex;
-    justify-content: space-around;
-    float: left;
-  }
   
   .formulario {
     display: flex;
@@ -92,6 +87,7 @@ body {
     align-self: center;
     margin-top: 5px;
     border: 2px solid black;
+    cursor: pointer;
   }
 
   .img {
