@@ -31,25 +31,25 @@
                 <div class="formulario">
 
                     <span class="tipo_campo">Nome:</span>
-                    <input class="input"  type="text" placeholder="Nome">
+                    <input class="input"  type="text" placeholder="Nome" id="nome_input" >
 
                     <span class="tipo_campo">E-mail:</span>
-                    <input class="input"  type="text" placeholder="E-mail@provedor.com">
+                    <input class="input"  type="text" placeholder="E-mail@provedor.com" id="email_input" >
 
                     <span class="tipo_campo">Senha:</span>
-                    <input class="input"  type="password" placeholder="********">
+                    <input class="input"  type="password" placeholder="********" id="senha_input" >
 
                     <span class="tipo_campo">Telefone:</span>
-                    <input class="input"  type="text" placeholder="(DDD) 9...">
+                    <input class="input"  type="text" placeholder="(DDD) 9..." id="telefone_input" >
 
                     <span class="tipo_campo">Fabricante:</span>
-                    <input class="input"  type="text" placeholder="Chevrolet">
+                    <input class="input"  type="text" placeholder="Chevrolet" id="fabricante_input" >
 
                     <span class="tipo_campo">Modelo:</span>
-                    <input class="input"  type="text" placeholder="Opala">
+                    <input class="input"  type="text" placeholder="Opala" id="modelo_input" >
 
                     <span class="tipo_campo">Ano:</span>
-                    <input class="input"  type="text" placeholder="1977/77">
+                    <input class="input"  type="text" placeholder="1977/77" id="ano_input" >
 
                     <button class="botao" onclick="cadastrar()">Cadastrar</button>
 
@@ -69,6 +69,80 @@
         </footer>
     </div>
 
-    
 </body>
 </html>
+
+<script>
+    function cadastrar() {
+        aguardar();
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeVar = nome_input.value;
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+        var telefoneVar = telefone_input.value;
+        var fabricanteVar = fabricante_input.value;
+        var modeloVar = modelo_input.value;
+        var anoVar = ano_input.value;
+
+        if (nomeVar == "" || emailVar == "" || senhaVar == "" || telefoneVar == "" || fabricanteVar == "" || modeloVar == "" || anoVar == "" ) {
+            cardErro.style.display = "block"
+            alert (`Mensagem de erro para todos os campos em branco`)
+
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+                telefoneServer: telefoneVar,
+                fabricanteServer: fabricanteVar,
+                modeloServer: modeloVar,
+                anoServer: anoVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                cardErro.style.display = "block";
+
+                alert (`Cadastro realizado com sucesso! Redirecionando para tela de Login...`)
+
+                setTimeout(() => {
+                    window.location = "login.html";
+                }, "2000")
+                
+                limparFormulario();
+                finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+
+</script>
+
