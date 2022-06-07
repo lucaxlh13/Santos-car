@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <title>Santo´s Car | Login</title>
+</head>
+<body>
+        
+    <div class="header">
+        <div class="container">
+            <img  class="logo" src="LOGOS/1.png" alt="">
+            <ul class="navbar">
+                <li><b><a href="index.html">INICIO</a></li></b>
+                <li><b><a href="carros.html">CARROS</a></li></b>
+                <li><b><a href="motos.html">MOTOS</a></li></b>
+                <li><b><a href="duelos.html">DUELOS</a></li></b>
+            </ul>
+        </div>
+    </div>
+
+    <div class="banner ">
+        
+        <h2>AQUI VOCÊ TERA ACESSO A TODOS OS EVENTOS E EXPOSIÇÕES QUE VÃO ACONTECER NO MUNDO AUTOMOTIVO !</h2>
+<img class="img" src="img._curiosidade.jpg" alt="">
+
+        <div class="container">
+            <div class="card">
+                <div class="formulario">
+
+                    <span class="tipo_campo">E-mail:</span>
+                    <input class="input"  type="text" placeholder="E-mail@provedor.com" id="email_input" > 
+
+                    <span class="tipo_campo">Senha:</span>
+                    <input class="input"  type="password" placeholder="********" id="senha_input" > 
+
+                    <button class="botao" onclick="entrar()">Entrar</button>
+
+                    <p> Não tem conta ? <a href="cadastro.html"><b>Cadastre-se</b></a> agora </p> 
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+    <div>
+        <footer class="footer">
+            Copyright © 2022 todos os direitos reservados
+        </footer>
+    </div>
+
+    
+</body>
+</html>
+<script>
+
+    function inicio(){
+        window.location = "./index.html";
+    }
+      
+    function entrar() {
+        //aguardar();
+
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+
+        if ( emailVar == "" || senhaVar == "" ) {
+            cardErro.style.display = "block"
+            alert("Existe campos em brancos");
+            // finalizarAguardar();
+            return false;
+        }
+        else {
+            //setInterval(sumirMensagem, 5000)
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id_usuario;
+
+                    setTimeout(function () {
+                        window.location = "./Encontros.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    // finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+
+</script>

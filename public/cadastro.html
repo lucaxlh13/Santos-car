@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cadastro.css">
+    <title>Santo´s Car | Cadastro</title>
+</head>
+<body>
+        
+    <div class="header">
+        <div class="container">
+            <img  class="logo" src="LOGOS/1.png" alt="">
+            <ul class="navbar">
+                <li><b><a href="index.html">INICIO</a></li></b>
+                <li><b><a href="carros.html">CARROS</a></li></b>
+                <li><b><a href="motos.html">MOTOS</a></li></b>
+                <li><b><a href="duelos.html">DUELOS</a></li></b>
+            </ul>
+        </div>
+    </div>
+
+    <div class="banner ">
+
+        <h2>AQUI VOCÊ TERA ACESSO A TODOS OS EVENTOS E EXPOSIÇÕES QUE VÃO ACONTECER NO MUNDO AUTOMOTIVO !</h2>
+<img class="img" src="img._curiosidade.jpg" alt="">
+
+        <div class="container">
+            <div class="card">
+                <div class="formulario">
+
+                    <span class="tipo_campo">Nome:</span>
+                    <input class="input"  type="text" placeholder="*  Nome" id="nome_input" >
+
+                    <span class="tipo_campo">E-mail:</span>
+                    <input class="input"  type="text" placeholder="*  E-mail@provedor.com" id="email_input" >
+
+                    <span class="tipo_campo">Senha:</span>
+                    <input class="input"  type="password" placeholder="*  ********" id="senha_input" >
+
+                    <span class="tipo_campo">Telefone:</span>
+                    <input class="input"  type="text" placeholder="*  (DDD) 9..." id="telefone_input" >
+
+                    <span class="tipo_campo">Fabricante:</span>
+                    <input class="input"  type="text" placeholder="Chevrolet" id="fabricante_input" >
+
+                    <span class="tipo_campo">Modelo:</span>
+                    <input class="input"  type="text" placeholder="Opala" id="modelo_input" >
+
+                    <span class="tipo_campo">Ano:</span>
+                    <input class="input"  type="text" placeholder="1977/77" id="ano_input" >
+
+                    <button class="botao" onclick= "cadastrar()" >Cadastrar</button>
+                    
+                    <p> Ja tem conta existente ? Faça <a href="login.html"><b>Login</b></a></p>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+    <div>
+        <footer class="footer">
+            Copyright © 2022 todos os direitos reservados
+        </footer>
+    </div>
+
+</body>
+</html>
+
+<script>
+    function cadastrar() {
+       // aguardar();
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeVar = nome_input.value;
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+        var telefoneVar = telefone_input.value;
+        var fabricanteVar = fabricante_input.value;
+        var modeloVar = modelo_input.value;
+        var anoVar = ano_input.value
+
+        if (nomeVar == "" || emailVar == "" || senhaVar == "" || telefoneVar== "") {
+            //cardErro.style.display = "block"
+            alert("Campos com (*) São Obrigatorios");
+
+           // finalizarAguardar();
+            return false;
+        }
+        else {
+        }
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+                telefoneServer: telefoneVar,
+                fabricanteServer: fabricanteVar,
+                modeloServer: modeloVar,
+                anoServer: anoVar,
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+               // cardErro.style.display = "block";
+
+               // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                setTimeout(() => {
+                    window.location = "./login.html";
+                }, "2000")
+                
+               // limparFormulario();
+               // finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+        return false;
+    }
+
+</script>
+
+
+

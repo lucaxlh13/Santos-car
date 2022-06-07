@@ -1,0 +1,117 @@
+body {
+    margin: 0;
+    box-sizing: border-box;
+    background-color: #e5e5e5;
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif; 
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #503f32;
+    font-size: 15px;
+}
+
+.logo {
+    width: 200px;
+    height: 200px;
+}
+
+.header .container {
+    display: flex;
+    height: 150px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar {
+    display: flex;
+    list-style: none;
+    width: 400px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#carros {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+}
+
+.carro1, .carro2, .carro3, .carro4, .carro5, .carro6, .carro7, .carro8, .carro9, .carro10, .carro11, .carro12  {
+    height: 700px;
+    width: 500px;
+    border-radius: 1px;
+    border: 3px solid #503f32 ; 
+    background-color: #e5e5e5;
+    margin-left: 5px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+ .slides, .slides1, .slides2, .slides3, .slides4, .slides5, .slides6, .slides7, .slides8, .slides9, .slides10, .slides11 {
+    display: none;
+    margin-left: 4px;
+}
+
+h3 i {
+    margin-left: 10px;
+    color: #352921;
+}
+
+.texto {
+    margin-left: 10px;
+}
+
+.texto u {
+    color: #352921;
+}
+
+.texto b {
+    color: #503f32;
+}
+
+.texto li {
+    color: black;
+    font-weight: 500;
+}
+
+.botao {
+    border: 0;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 10px 15px;
+    color: #352921;
+    background-color: #e5e5e5;
+    width: 120px;
+    align-self: center;
+    margin-top: 5px;
+    border: 2px solid #503f32;
+    cursor: pointer;
+  }
+
+.footer {
+    background-color: #503f32;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

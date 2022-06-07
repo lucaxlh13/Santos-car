@@ -25,15 +25,16 @@ function listar(req, res) {
 }
 
 function entrar(req, res) {
+   
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
 
-    if (email == undefined) {
+      if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
-        res.status(400).send("Sua senha está indefinida!");
+        res.status(400).send("Sua senha está undefined!");
     } else {
-        
+
         usuarioModel.entrar(email, senha)
             .then(
                 function (resultado) {
@@ -65,18 +66,31 @@ function cadastrar(req, res) {
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
+    var telefone = req.body.telefoneServer;
+    var fabricante = req.body.fabricanteServer;
+    var modelo = req.body.modeloServer;
+    var ano = req.body.anoServer;
 
     // Faça as validações dos valores
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
-    } else if (email == undefined) {
+    } if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
-    } else if (senha == undefined) {
+    } if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
-    } else {
-        
+    } if (telefone == undefined) {
+        res.status(400).send("Seu telefone está undefined!");
+    } if (fabricante == undefined) {
+        res.status(400).send("Seu fabricante está undefined!");
+    } if (modelo == undefined) {
+        res.status(400).send("Seu modelo está undefined!");
+    } if (ano == undefined) {
+        res.status(400).send("Seu ano está undefined!");
+    }
+    else {
+
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, email, senha)
+        usuarioModel.cadastrar( nome, email, senha, telefone, fabricante, modelo, ano)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -95,8 +109,8 @@ function cadastrar(req, res) {
 }
 
 module.exports = {
+    testar,
+    listar,
     entrar,
     cadastrar,
-    listar,
-    testar
 }
