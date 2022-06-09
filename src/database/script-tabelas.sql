@@ -4,26 +4,31 @@ use santos_car;
 
 create table camaro (
 	id_camaro INT AUTO_INCREMENT,
+    nome varchar(50),
     primary key (id_camaro)
 );
 
 create table dodge (
 	id_dodge INT AUTO_INCREMENT,
+    nome varchar(50),
     primary key (id_dodge)
 );
 
 create table ferrari (
 	id_ferrari INT AUTO_INCREMENT,
+    nome varchar(50),
     primary key (id_ferrari)
 );
 
 create table porsche (
 	id_porsche INT AUTO_INCREMENT,
+    nome varchar(50),
     primary key (id_porsche)
 );
 
 create table omega (
 	id_omega INT AUTO_INCREMENT,
+    nome varchar(50),
     primary key (id_omega)
 );
 
@@ -35,7 +40,7 @@ create table usuarios (
     telefone varchar(50),
     fabricante varchar(45) null,
 	modelo varchar(45) null,
-	ano int null,
+	ano varchar (45 )null,
     fk_carro1 int,
     foreign key (fk_carro1) references camaro(id_camaro),
     fk_carro2 int,
@@ -47,3 +52,5 @@ create table usuarios (
     fk_carro5 int,
     foreign key (fk_carro5) references omega(id_omega)
 );
+
+select * from usuarios;
