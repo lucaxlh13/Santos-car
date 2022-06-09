@@ -4,7 +4,7 @@ var sql = require('mssql');
 // CONEXÃO DO SQL SERVER - AZURE (NUVEM)
 var sqlServerConfig = {
     server: "localhost",
-    database: "santos_colection",
+    database: "santos_car",
     user: "root",
     password: "583299",
     pool: {
@@ -20,7 +20,7 @@ var sqlServerConfig = {
 // CONEXÃO DO MYSQL WORKBENCH (LOCAL)
 var mySqlConfig = {
     host: "localhost",
-    database: "santos_colection",
+    database: "santos_car",
     user: "root",
     password: "583299",
 };

@@ -16,7 +16,6 @@
                 <li><b><a href="index.html">INICIO</a></li></b>
                 <li><b><a href="carros.html">CARROS</a></li></b>
                 <li><b><a href="motos.html">MOTOS</a></li></b>
-                <li><b><a href="duelos.html">DUELOS</a></li></b>
             </ul>
         </div>
     </div>
@@ -70,8 +69,8 @@
         var senhaVar = senha_input.value;
 
         if ( emailVar == "" || senhaVar == "" ) {
-            cardErro.style.display = "block"
-            alert("Existe campos em brancos");
+            // cardErro.style.display = "block"
+            alert("Existe algum campo em Branco !");
             // finalizarAguardar();
             return false;
         }
@@ -112,6 +111,8 @@
                 });
 
             } else {
+
+                alert("Usuario não cadastrado");
 
                 console.log("Houve um erro ao tentar realizar o login!");
 

@@ -108,9 +108,268 @@ function cadastrar(req, res) {
     }
 }
 
+function cadastrar_voto(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var fk_usuario = req.body.fk_usuarioServer;
+    var votocarro = req.body.votocarroServer;
+
+    // Faça as validações dos valores
+    if (votocarro == undefined) {
+        res.status(400).send("Seu voto está undefined!");
+    } else {
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.cadastrar_voto(votocarro, fk_usuario)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+function cadastrar_voto2(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var fk_usuario = req.body.fk_usuarioServer;
+    var votocarro = req.body.votocarroServer;
+
+    // Faça as validações dos valores
+    if (votocarro == undefined) {
+        res.status(400).send("Seu voto está undefined!");
+    } else {
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.cadastrar_voto2(votocarro, fk_usuario)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+function cadastrar_voto3(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var fk_usuario = req.body.fk_usuarioServer;
+    var votocarro = req.body.votocarroServer;
+
+    // Faça as validações dos valores
+    if (votocarro == undefined) {
+        res.status(400).send("Seu voto está undefined!");
+    } else {
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.cadastrar_voto3(votocarro, fk_usuario)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+function cadastrar_voto4(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var fk_usuario = req.body.fk_usuarioServer;
+    var votocarro = req.body.votocarroServer;
+
+    // Faça as validações dos valores
+    if (votocarro == undefined) {
+        res.status(400).send("Seu voto está undefined!");
+    } else {
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.cadastrar_voto4(votocarro, fk_usuario)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+function cadastrar_voto5(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var fk_usuario = req.body.fk_usuarioServer;
+    var votocarro = req.body.votocarroServer;
+
+    // Faça as validações dos valores
+    if (votocarro == undefined) {
+        res.status(400).send("Seu voto está undefined!");
+    } else {
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.cadastrar_voto5(votocarro, fk_usuario)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+function coletarvoto(req, res) {
+    usuarioModel.coletarvoto()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function coletarvoto2(req, res) {
+    usuarioModel.coletarvoto2()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function coletarvoto3(req, res) {
+    usuarioModel.coletarvoto3()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function coletarvoto4(req, res) {
+    usuarioModel.coletarvoto4()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function coletarvoto5(req, res) {
+    usuarioModel.coletarvoto5()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function grafico(req, res) {
+    var id = req.body.idServer
+    usuarioModel.grafico(id)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 module.exports = {
     testar,
     listar,
     entrar,
     cadastrar,
+    cadastrar_voto,
+    cadastrar_voto2,
+    cadastrar_voto3,
+    cadastrar_voto4,
+    cadastrar_voto5,
+    coletarvoto,
+    coletarvoto2,
+    coletarvoto3,
+    coletarvoto4,
+    coletarvoto5,
+    grafico
 }

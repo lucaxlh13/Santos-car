@@ -16,12 +16,12 @@
                 <li><b><a href="index.html">INICIO</a></li></b> 
                 <li><b><a href="carros.html">CARROS</a></li></b> 
                 <li><b><a href="motos.html">MOTOS</a></li></b> 
-                <li><b><a href="login.html">LOGIN</a></li></b> 
+                <li><b><a href="#">DASHBOARD</a></li></b> 
             </ul>
         </div>
     </div>
 
-    <h1 class="titulo">VOTE NO MELHOR DE ACORDO COM SEU GOSTO !  <h5 class="titulo" >OBS: SÃO OS MESMO CARROS APENAS ANOS DIFERENTES.</h5> </h1>
+    <h1 class="titulo">VOTE NO MELHOR DE ACORDO COM SEU GOSTO !  <h5 class="titulo" >OBS: AO FINAL CLIQUE EM "DASHBOARD" PARA VER O GRAFICO DE QUANTOS VOTOS CADA CARRO RECEBEU !!!</h5> </h1>
 
     <div class="linha" ></div>
 
@@ -32,14 +32,14 @@
             <img class="lado_esquerdo" src="carros/CAMARO/1.png" alt="">
           <br>
           <br>
-           VOTE NO MELHOR: <input  class="voto" type="checkbox">
+           <button class="botao" onclick="cadastrar_voto(1)" >VOTO NESSE</button>
         </div>
         <img class="vs" src="vs.png" alt="">
         <div>
             <img class="lado_direito" src="carros/CAMARO/2.png" alt="">
           <br>
           <br>
-           VOTE NO MELHOR: <input  class="voto" type="checkbox">
+           <button class="botao" onclick="cadastrar_voto(2)" >VOTO NESSE</button>
         </div>
     </div>   
 
@@ -55,14 +55,14 @@
             <img class="lado_esquerdo" src="carros/DODGE CHARGER RT/1.png" alt="">
           <br>
           <br>
-           VOTE NO MELHOR: <input  class="voto" type="checkbox">
+           <button class="botao" onclick="cadastrar_voto2(3)" >VOTO NESSE</button>
         </div>
         <img class="vs" src="vs.png" alt="">
         <div>
             <img class="lado_direito" src="carros/DODGE CHARGER RT/2.png" alt="">
           <br>
           <br>
-           VOTE NO MELHOR: <input  class="voto" type="checkbox">
+           <button class="botao" onclick="cadastrar_voto2(4)" >VOTO NESSE</button>        
         </div>
     </div>
 
@@ -78,14 +78,14 @@
             <img class="lado_esquerdo" src="carros/FERRARI F355 BERLINETTA - FERRARI CALIFÓRNIA 4.3 V8/1.png" alt="">
           <br>
           <br>
-           VOTE NO MELHOR: <input  class="voto" type="checkbox">
+           <button class="botao" onclick="cadastrar_voto3(5)" >VOTO NESSE</button>
         </div>
         <img class="vs" src="vs.png" alt="">
         <div>
             <img class="lado_direito" src="carros/FERRARI F355 BERLINETTA - FERRARI CALIFÓRNIA 4.3 V8/2.png" alt="">
           <br>
           <br>
-           VOTE NO MELHOR: <input  class="voto" type="checkbox">
+           <button class="botao" onclick="cadastrar_voto3(6)" >VOTO NESSE</button>
         </div>
     </div>
 
@@ -101,14 +101,14 @@
             <img class="lado_esquerdo" src="carros/PORSCHE 911 CARRERA S/1.png" alt="">
           <br>
           <br>
-           VOTE NO MELHOR: <input  class="voto" type="checkbox">
+           <button class="botao" onclick="cadastrar_voto4(7)" >VOTO NESSE</button>
         </div>
         <img class="vs" src="vs.png" alt="">
         <div>
             <img class="lado_direito" src="carros/PORSCHE 911 CARRERA S/2.png" alt="">
           <br>
           <br>
-           VOTE NO MELHOR: <input  class="voto" type="checkbox">
+           <button class="botao" onclick="cadastrar_voto4(8)" >VOTO NESSE</button>
         </div>
     </div>
 
@@ -124,14 +124,14 @@
             <img class="lado_esquerdo" src="carros/GM OMEGA CD/1.png" alt="">
           <br>
           <br>
-           VOTE NO MELHOR: <input  class="voto" type="checkbox">
+           <button class="botao" onclick="cadastrar_voto5(9)" >VOTO NESSE</button>
         </div>
         <img class="vs" src="vs.png" alt="">
         <div>
             <img class="lado_direito" src="carros/GM OMEGA CD/2.png" alt="">
           <br>
           <br>
-           VOTE NO MELHOR: <input  class="voto" type="checkbox">
+           <button class="botao" onclick="cadastrar_voto5(10)" >VOTO NESSE</button>
         </div>
     </div>
 
@@ -140,10 +140,206 @@
     <br>
     <br>
     <br>
-
+    <br>
+    <br>
+   
     <footer class="footer">
         Copyright © 2022 todos os direitos reservados
     </footer>
     
 </body>
 </html>
+
+<script>
+
+function cadastrar_voto(voto) {
+    var votocarro = voto
+
+    fetch("/usuarios/cadastrar_voto", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            // crie um atributo que recebe o valor recuperado aqui
+            // Agora vá para o arquivo routes/usuario.js
+            votocarroServer: votocarro,
+            fk_usuarioServer: sessionStorage.ID_USUARIO
+        })
+    }).then(function (resposta) {
+
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+
+
+            setTimeout(() => {
+                window.location = "duelo.html";
+            }, "2000")
+
+            alert("Voto Cadastrado com sucesso!")
+
+        } else {
+            throw ("Houve um erro ao tentar realizar o cadastro!");
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+
+    });
+
+    return false;
+}
+
+function cadastrar_voto2(voto) {
+    var votocarro = voto
+
+    fetch("/usuarios/cadastrar_voto2", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            // crie um atributo que recebe o valor recuperado aqui
+            // Agora vá para o arquivo routes/usuario.js
+            votocarroServer: votocarro,
+            fk_usuarioServer: sessionStorage.ID_USUARIO
+        })
+    }).then(function (resposta) {
+
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+
+
+            setTimeout(() => {
+                window.location = "duelo.html";
+            }, "2000")
+
+            alert("Voto Cadastrado com sucesso!")
+
+        } else {
+            throw ("Houve um erro ao tentar realizar o cadastro!");
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+
+    });
+
+    return false;
+}
+
+function cadastrar_voto3(voto) {
+    var votocarro = voto
+
+    fetch("/usuarios/cadastrar_voto3", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            // crie um atributo que recebe o valor recuperado aqui
+            // Agora vá para o arquivo routes/usuario.js
+            votocarroServer: votocarro,
+            fk_usuarioServer: sessionStorage.ID_USUARIO
+        })
+    }).then(function (resposta) {
+
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+
+
+            setTimeout(() => {
+                window.location = "duelo.html";
+            }, "2000")
+
+            alert("Voto Cadastrado com sucesso!")
+
+        } else {
+            throw ("Houve um erro ao tentar realizar o cadastro!");
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+
+    });
+
+    return false;
+}
+
+function cadastrar_voto4(voto) {
+    var votocarro = voto
+
+    fetch("/usuarios/cadastrar_voto4", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            // crie um atributo que recebe o valor recuperado aqui
+            // Agora vá para o arquivo routes/usuario.js
+            votocarroServer: votocarro,
+            fk_usuarioServer: sessionStorage.ID_USUARIO
+        })
+    }).then(function (resposta) {
+
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+
+
+            setTimeout(() => {
+                window.location = "duelo.html";
+            }, "2000")
+
+            alert("Voto Cadastrado com sucesso!")
+
+        } else {
+            throw ("Houve um erro ao tentar realizar o cadastro!");
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+
+    });
+
+    return false;
+}
+
+function cadastrar_voto5(voto) {
+    var votocarro = voto
+
+    fetch("/usuarios/cadastrar_voto5", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            // crie um atributo que recebe o valor recuperado aqui
+            // Agora vá para o arquivo routes/usuario.js
+            votocarroServer: votocarro,
+            fk_usuarioServer: sessionStorage.ID_USUARIO
+        })
+    }).then(function (resposta) {
+
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+
+
+            setTimeout(() => {
+                window.location = "dash.html";
+            }, "2000")
+
+            alert("Voto Cadastrado com sucesso!")
+
+        } else {
+            throw ("Houve um erro ao tentar realizar o cadastro!");
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+
+    });
+
+    return false;
+}
+
+</script>
